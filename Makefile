@@ -54,15 +54,13 @@ BONUSOBJ	:= $(BONUS:.c=.o)
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) all
 			$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 
 bonus:	$(OBJ) $(BONUSOBJ)
 			$(AR) $(ARFLAGS) $(NAME) $(OBJ) $(BONUSOBJ)
 
 all:		$(NAME)
-
-bonus:		all
 
 clean:
 			$(RM) *.o */*.o */*/*.o
