@@ -6,7 +6,7 @@
 /*   By: cjouenne <cjouenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:12:21 by cjouenne          #+#    #+#             */
-/*   Updated: 2023/08/02 22:05:51 by cjouenne         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:16:37 by cjouenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,19 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	cd = (unsigned char *) dest;
 	cs = (unsigned char *) src;
+	if (!dest && !src && n > 0)
+		return (NULL);
 	if (dest > src && dest < src + n)
 	{
 		i = n;
-		while (i > 0)
-		{
-			i--;
+		while (i-- > 0)
 			cd[i] = cs[i];
-		}
 	}
 	else
 	{
-		i = 0;
-		while (i < n)
-		{
+		i = -1;
+		while (++i < n)
 			cd[i] = cs[i];
-			i++;
-		}
 	}
 	return (dest);
 }
